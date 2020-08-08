@@ -1,38 +1,238 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  background-color: rgb(232, 239, 241);
+  overflow: hidden;
+}
+
 .App {
+  background-color: white;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 80px 100px 1fr 1fr;
+}
+
+.heading {
+  border-bottom: 1px solid grey;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.heading span {
+  font-weight: 800;
+  color: orange;
+}
+
+.current-balance {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.exp-inc-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.expense, .income {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 200px;
+  height: 90%;
+  border-radius: 20px;
+  margin: 10px;
+  color: white;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.income {
+  background-color: rgb(0, 143, 0);
+}
+
+.expense {
+  background-color: rgb(180, 0, 0);
+}
+
+.transaction-history h2 {
+  padding: 10px 2.5%;
+}
+
+.line {
+  width: 95%;
+  height: 3px;
+  background-color: grey;
+  margin: 0px auto;
+  border-radius: 20px;
+}
+
+.history {
+  width: 90%; 
+  height: 1fr;
+  max-height: 115px;
+  margin: auto;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.history-element-plus, .history-element-minus {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  border: 1px solid black;
+  padding-right: 10px;
+  margin: 5px 0px;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.history-element-plus div, .history-element-minus div {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+}
+
+.history-element-plus {
+  border-right: 10px solid rgb(0, 143, 0);
+}
+.history-element-plus h4 {
+  color: green;
+}
+
+.history-element-minus {
+  border-right: 10px solid rgb(180, 0, 0);
+}
+.history-element-minus h4 {
+  color: red;
+}
+
+.del-element {
+  width: 40px;
+  height: 100%;
+  background-color: red;
+  border: none;
+  outline: none;
+  opacity: 0;
+  transition: 0.4s ease;
+  border-radius: 10px 0px 0px 10px;
+  cursor: pointer;
+}
+
+.del-element i {
+  color: white;
+  font-size: 20px;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.del-element:hover {
+  background-color: rgb(180, 0, 0);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.history-element-plus:hover .del-element, .history-element-minus:hover .del-element {
+  opacity: 1;
+}
+
+.add-transaction h2 {
+  padding: 10px 2.5%;
+}
+
+.exp-inc-btn {
+  width: 200px;
+  height: 30px;
+  margin: 5px auto;
+  border-radius: 20px;
+  border: 1px solid black;
+  position: relative;
+}
+
+.exp-inc-btn-slider {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 128, 0, 0.5);
+  border-radius: 20px;
+  pointer-events: none;
+  transition: 0.6s ease;
+}
+
+.exp-inc-btn button {
+  width: 50%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  height: 100%;
+  cursor: pointer;
+}
+
+.add-transaction form {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.add-transaction form > div {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+input {
+  width: 100%;
+  height: 30px;
+  font-size: 15px;
+  outline: none;
+  border: 1px solid grey;
+  border-radius: 3px;
+  padding-left: 5px;
+}
+input:focus {
+  border: 1px solid green;
+}
+
+form button {
+  width: 150px;
+  height: 30px;
+  margin: 5px auto;
+  background-color: green;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  cursor: pointer;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+
+@media screen and (max-width: 768px) {
+  .App {
+      width: 100%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .expense, .income {
+      width: 40%;
   }
 }
