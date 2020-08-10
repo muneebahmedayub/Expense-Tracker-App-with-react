@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Transaction from './Transaction'
+import { TransactionContext } from '../Context/TransactionContext';
 
 function TransactionHistory() {
+    const [transactions, setTransactions] = useContext(TransactionContext)
+
     return (
-        <div className="transaction-history">
-            <h2>Transaction History</h2>
-            <div className="line"></div>
-            <div className="history">
+         <div className="transaction-history">
+             <h2>Transaction History</h2>
+             <div className="line"></div>
+             <div className="history">
+                
+                {transactions.map (transaction => (
+                    <Transaction description={transaction.description} amount={transaction.amount} />
+                ))}
+
+
                 {/* <div className="history-element-plus">
                     <div>
                         <button className="del-element"><i class="fas fa-times"></i></button>
@@ -21,7 +31,7 @@ function TransactionHistory() {
                     <h4 className="amount">$300</h4>
                 </div> */}
             </div>
-        </div>
+         </div>
     );
 }
 
