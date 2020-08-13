@@ -1,16 +1,14 @@
 import React, { useState, useContext } from 'react';
-import Transaction from './Transaction';
 import { TransactionContext } from '../Context/TransactionContext';
 
-function AddTransaction() {
+function AddTransaction({addIncome}) {
     let [slider, setSlider] = useState({
         transform: "translateX(0%)",
         backgroundColor: "rgba(0, 128, 0, 0.5)"
     })
-    // var [addIncome, setAddIncome] = useContext(TransactionContext)
-    const [addIncome, setAddIncome] = useState(true)
-
-    const [transactions, setTransactions] = useContext(TransactionContext)
+    const value = useContext(TransactionContext)
+    
+    const [transactions, setTransactions] = value.transaction
 
     const [description, setDescription] = useState('')
     const [amount, setAmount] = useState('')
@@ -41,7 +39,7 @@ function AddTransaction() {
                             transform: "translateX(0%)",
                             backgroundColor: "rgba(0, 128, 0, 0.5)"
                         })
-                        setAddIncome(true)
+                        addIncome = true
                     }
                 }>Add Income</button><button className="exp-btn" onClick={
                     () => {
@@ -49,7 +47,7 @@ function AddTransaction() {
                             transform: "translateX(100%)",
                             backgroundColor: "rgba(180, 0, 0, 0.5)"
                         })
-                        setAddIncome(false)
+                        addIncome = false
                     }
                 }>Add Expense</button>
             </div>

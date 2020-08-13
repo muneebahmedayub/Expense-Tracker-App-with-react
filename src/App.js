@@ -8,14 +8,16 @@ import AddTransaction from './Components/AddTransaction'
 import {TransactionProvider} from './Context/TransactionContext'
 
 function App() {
+
+  var addIncome = true
   return (
     <TransactionProvider>
       <div className="App">
         <Heading />
         <CurrentBalance />
         <ExpenseIncome />
-        <TransactionHistory />
-        <AddTransaction />
+        <TransactionHistory addIncome={addIncome} />
+        <AddTransaction addIncome={addIncome} />
       </div>
     </TransactionProvider>
   );

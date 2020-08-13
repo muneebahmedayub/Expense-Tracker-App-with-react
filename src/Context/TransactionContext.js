@@ -1,5 +1,4 @@
 import React, { useState, createContext } from 'react';
-import TransactionHistory from '../Components/TransactionHistory';
 
 export const TransactionContext = createContext()
 
@@ -9,11 +8,8 @@ export const TransactionProvider = props => {
     ]);
 
 
-
-    const [addIncome, setAddIncome] = useState(true)
-
     return (
-        <TransactionContext.Provider value={[transactions, setTransactions]} income={[addIncome, setAddIncome]}>
+        <TransactionContext.Provider value={{transaction: [transactions, setTransactions]}}>
             {props.children}
         </TransactionContext.Provider>
     );
