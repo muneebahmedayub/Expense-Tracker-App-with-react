@@ -33,7 +33,7 @@ function AddTransaction() {
 
   const addTransaction = (e) => {
     e.preventDefault();
-    if (description === "" && amount === "") {
+    if (description === "" || amount === "") {
       setInputStyle({
         border: "1px solid red",
       });
